@@ -1,4 +1,4 @@
-package org.example;
+package org.example.design_patterns;
 
 // referred from https://www.geeksforgeeks.org/mvc-design-pattern/
 

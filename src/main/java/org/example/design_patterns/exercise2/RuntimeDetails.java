@@ -1,4 +1,4 @@
-package org.example.exercise2;
+package org.example.design_patterns.exercise2;
 
 public class RuntimeDetails {
     public static void main(String[] args) {

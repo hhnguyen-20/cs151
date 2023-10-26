@@ -1,4 +1,4 @@
-package org.example.exercise1;
+package org.example.design_patterns.exercise1;
 
 import java.util.Arrays;
 import java.util.List;

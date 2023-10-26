@@ -1,4 +1,4 @@
-package org.example;
+package org.example.design_patterns;
 
 public class SingletonRace {
     public static void main(String[] args) {

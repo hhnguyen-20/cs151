@@ -1,4 +1,4 @@
-package org.example.exercise2;
+package org.example.design_patterns.exercise2;
 
 public class ChocolateBoiler {
     private boolean empty;
