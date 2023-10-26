@@ -1,4 +1,4 @@
-package org.example.exercise3;
+package org.example.design_patterns.exercise3;
 
 public class CurrentConditionsDisplay {
     private float temperature;

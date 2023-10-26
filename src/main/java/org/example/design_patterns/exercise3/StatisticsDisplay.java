@@ -1,4 +1,4 @@
-package org.example.exercise3;
+package org.example.design_patterns.exercise3;
 
 public class StatisticsDisplay {
     private float maxTemp = 0.0f;
