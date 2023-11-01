@@ -1,17 +1,18 @@
 package org.example.design_patterns.exercise2;
 
-public class ChocolateBoiler {
+public enum ChocolateBoiler2 {
+
+    INSTANCE;
     private boolean empty;
     private boolean boiled;
 
-    private ChocolateBoiler() {
+    ChocolateBoiler2() {
         /*
          * This code is only started when
          * the boiler is empty!
          */
         empty = true;
         boiled = false;
-        System.out.println("Created new instance by thread" + Thread.currentThread().threadId());
     }
 
     public void fill() {
@@ -52,19 +53,6 @@ public class ChocolateBoiler {
         }
     }
 
-    private static ChocolateBoiler instance;
-
-    static synchronized ChocolateBoiler getInstance() {
-        if(instance == null) {
-            instance = new ChocolateBoiler();
-        }
-        int j = 0;
-        for(int i = 0; i< 1000000; i++) {
-            j++;
-        }
-        return instance;
-    }
-
     public boolean isEmpty() {
         return empty;
     }
@@ -74,12 +62,8 @@ public class ChocolateBoiler {
     }
 }
 
-class Main {
+class Main2 {
     public static void main(String[] args) {
-        new Thread(() -> {
-            ChocolateBoiler cb = ChocolateBoiler.getInstance();
-        }).start();
-
-        ChocolateBoiler cb2 = ChocolateBoiler.getInstance();
+        ChocolateBoiler2 cb = ChocolateBoiler2.INSTANCE;
     }
 }

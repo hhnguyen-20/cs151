@@ -13,16 +13,20 @@ public class SingletonRace {
 }
 
 class MySingleton {
+
+    static Object lock = new Object();
     private static MySingleton instance;
 
     private MySingleton() {
         System.out.println("New instance created by " + Thread.currentThread().threadId());
     }
 
-    public static MySingleton getInstance() {
-        if(instance == null) {
-            instance = new MySingleton();
-        }
-        return instance;
+    public static synchronized MySingleton getInstance() {
+//        synchronized (lock) {
+            if (instance == null) {
+                instance = new MySingleton();
+            }
+            return instance;
+//        }
     }
 }

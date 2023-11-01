@@ -1,6 +1,7 @@
 package org.example.design_patterns.exercise1;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class Employee {
@@ -32,6 +33,16 @@ public class Employee {
         return company;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", salary=" + salary +
+                ", company=" + company +
+                '}';
+    }
+
     private Company company;
 
     public static void main(String[] args) {
@@ -44,7 +55,7 @@ public class Employee {
 
         List<Company> companies = Arrays.asList(apple, amazon, adobe, google, microsoft, facebook);
 
-        Employee e1 = new Employee("Alex", "Smith", 100000, apple);
+        Employee e1 = new Employee("Alex", "Smith", 110000, apple);
         Employee e2 = new Employee("John", "Doe", 90000, adobe);
         Employee e3 = new Employee("Emily", "Johnson", 95000, google);
         Employee e4 = new Employee("Michael", "Brown", 85000, apple);
@@ -53,7 +64,7 @@ public class Employee {
         Employee e7 = new Employee("John", "Doe", 90000, microsoft);
         Employee e8 = new Employee("Emily", "Johnson", 95000, google);
         Employee e9 = new Employee("Michael", "Brown", 85000, facebook);
-        Employee e10 = new Employee("Sarah", "Williams", 88000, amazon);
+        Employee e10 = new Employee("Sarah", "Williams", 87000, amazon);
         Employee e11 = new Employee("Alex", "Johnson", 92000, google);
         Employee e12 = new Employee("John", "Smith", 87000, apple);
         Employee e13 = new Employee("Emily", "Doe", 92000, microsoft);
@@ -70,11 +81,75 @@ public class Employee {
         // 2. Last Name - Ascending
         // 3. Salary - Descending
         // and print the employee details using a foreach loop
+        employees.sort(new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                if(o1.getFirstName().compareTo(o2.getFirstName()) > 0) {
+                    return 1;
+                } else if (o1.getFirstName().compareTo(o2.getFirstName()) < 0) {
+                    return -1;
+                } else {
+                    if(o1.getLastName().compareTo(o2.getLastName()) > 0) {
+                        return 1;
+                    } else if (o1.getLastName().compareTo(o2.getLastName()) < 0) {
+                        return -1;
+                    } else {
+                        if(o1.getSalary() > o2.getSalary()) {
+                            return -1;
+                        } else if (o1.getSalary() < o2.getSalary()) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        });
+
+        employees.sort(new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                if(o1.getFirstName().compareTo(o2.getFirstName()) > 0) {
+                    return 1;
+                } else if (o1.getFirstName().compareTo(o2.getFirstName()) < 0) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+
+        employees.forEach(emp -> {
+            System.out.println(emp);
+        });
 
         // TODO 3: Sort the companies by
         // 1. Name - Ascending
         // 2. Address - Ascending based on the state
         // and print the company details using a foreach loop
+
+        companies.sort(new Comparator<Company>() {
+            @Override
+            public int compare(Company o1, Company o2) {
+                if (o1.getName().compareTo(o2.getName()) > 0) {
+                    return 1;
+                } else if (o1.getName().compareTo(o2.getName()) < 0) {
+                    return -1;
+                } else {
+                    if (o1.getAddress().split(" ")[1].compareTo(o2.getAddress().split(" ")[1]) > 0) {
+                        return 1;
+                    } else if (o1.getAddress().split(" ")[1].compareTo(o2.getAddress().split(" ")[1]) < 0) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+                }
+            }
+        });
+
+        companies.forEach(comp -> {
+            System.out.println(comp);
+        });
 
         // TODO 4: Sort the employees by
         // 1. First Name - Ascending
@@ -90,6 +165,14 @@ class Company {
 
     private String name;
     private String address;
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 
     public Company(String name, String address) {
         this.name = name;
