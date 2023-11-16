@@ -27,4 +27,12 @@ public class ForecastDisplay implements Observer, DisplayElement {
 			System.out.println("Watch out for cooler, rainy weather");
 		}
 	}
+
+	// Write positive unit tests
+	public static void main(String[] args) {
+		WeatherData weatherData = new WeatherData();
+		ForecastDisplay forecastDisplay = new ForecastDisplay(weatherData);
+
+		weatherData.setMeasurements(80, 65, 30.4f);
+	}
 }

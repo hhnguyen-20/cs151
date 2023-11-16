@@ -29,4 +29,12 @@ public class HeatIndexDisplay implements Observer, DisplayElement {
 	public void display() {
 		System.out.println("Heat index is " + heatIndex);
 	}
+
+	// Write positive unit tests
+	public static void main(String[] args) {
+		WeatherData weatherData = new WeatherData();
+		HeatIndexDisplay heatIndexDisplay = new HeatIndexDisplay(weatherData);
+
+		weatherData.setMeasurements(80, 65, 30.4f);
+	}
 }
